@@ -75,7 +75,6 @@ class UserRegisterView(TemplateView):
     model = User
     template_name = "rh/user_form.html"
 
-
 class NewUserView(TemplateView):
     model = User
     template_name = "rh/user_register.html"
@@ -84,6 +83,9 @@ class AdminVocationsView(TemplateView):
     model = User
     template_name = "rh/ferias.html"
 
+class AdminHorasExtrasView(TemplateView):
+    model = User
+    template_name = "rh/horas_extras.html"
 
 class UserDetailView(DetailView):
     model = User

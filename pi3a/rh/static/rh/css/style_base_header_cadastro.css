@@ -79,7 +79,7 @@ main {
   height: 1.25rem;
 }
 
-@media screen and (max-width:1200px) { 
+@media screen and (max-width:1024px) { 
   .side {
     width: 90%;
   }

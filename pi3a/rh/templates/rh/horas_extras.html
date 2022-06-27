@@ -1,7 +1,6 @@
-{% extends 'base/base_page_header.html' %}
+{% extends 'base/base_lateral_header.html' %}
 
 {% load static %}
-
 {% block 'link' %}
 <link rel="stylesheet" href="{% static 'rh/css/style_horas_extras.css' %}">
 {% endblock %}
@@ -10,32 +9,43 @@
 
 {% block content %}
 
-<div class="box">
-    <h3>Horas Extras</h3>
-    <div class="group_horas_extras">
-        <div class="box_horas_extras">
-            <div class="selecao">
-                <h4>Relatório de Horas Extras</h4>
+<section class="content">
 
-                <select>
-                    <option>Selecionar funcionário</option>
-                </select>
-
-                <input type="date" placeholder="Selecione o período desejado">
-            </div>
-
-            <div class="box_contador">
-                <img class="clock" src="{% static 'rh/img/time-left1clock.svg' %}" alt="">
-                <p style="text-transform: uppercase; color: #FFFF;">Horas Extras</p>
-                <div class="contador">
-                    <p>00:00</p>
+    <div class="box">
+        <h3>Horas Extras</h3>
+        <div class="group_horas_extras">
+            <div class="box_horas_extras">
+    
+                <div class="selecao__contador">
+    
+                    <div class="selecao">
+                        <h4>Relatório de Horas Extras</h4>
+    
+                        <select>
+                            <option>Selecionar funcionário</option>
+                        </select>
+    
+                        <input type="date" placeholder="Selecione o período desejado">
+                    </div>
+    
+                    <div class="box_contador">
+                        <img class="clock" src="{% static 'rh/img/time-left1clock.svg' %}" alt="">
+                        <p style="text-transform: uppercase; color: #FFFF;">Horas Extras</p>
+                        <div class="contador">
+                            <p>00:00</p>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="area__grafico">
                 </div>
             </div>
+    
         </div>
-
-
     </div>
-</div>
+
+</section>    
 
 
 {% endblock %}

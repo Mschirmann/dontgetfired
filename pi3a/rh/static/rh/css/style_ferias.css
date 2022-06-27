@@ -13,7 +13,6 @@
 
 main {
     display: flex;
-    gap: 12.5rem;
     width: auto;
 }
 
@@ -21,16 +20,16 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: var(--rh-gray);
 }
-
+/* 
 .side {
     width: 13.125rem;
     font-weight: 500;
     font-size: 0.875rem;
     padding-top: 1.25rem;
     background-color: white;
-    height: 96.375vh;
+    height: 96.75vh;
   }
-  
+   */
 
 .box {
     margin-top: 53px;

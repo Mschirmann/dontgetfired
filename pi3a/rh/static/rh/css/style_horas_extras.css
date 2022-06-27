@@ -16,17 +16,21 @@ body {
   background-color: var(--rh-gray);
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+h3 {
+  font-size: 18px;
+  color: #28734e;
+}
+
+h4 {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.75);
 }
 
 .box_horas_extras {
   background-color: #fefefe;
   width: 56.25rem;
-  height: 33.75rem;
+  height: 45.5625rem;
 }
 
 .box {
@@ -36,15 +40,23 @@ main {
 .box_horas_extras {
   margin-top: 0.5625rem;
   display: flex;
+  flex-direction: column;
   gap: 0.825rem;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .selecao {
   display: flex;
   flex-direction: column;
-  margin-top: 26px;
+  margin-top: 1.625rem;
+}
+
+.selecao__contador {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
 }
 
 select,
@@ -63,7 +75,6 @@ input {
   gap: 9px;
   width: 393px;
   height: 74px;
-  /* padding: 43px 42px ; */
   padding-left: 43px;
   padding-right: 40px;
 }
@@ -82,6 +93,13 @@ input {
 }
 
 .clock {
-  height: 45px;
-  width: 45px;
+  height: 2.8125rem;
+  width: 2.8125rem;
+}
+
+.area__grafico {
+  width: 51.5rem;
+  height: 29.3125rem;
+  background-color: gray;
+  margin-bottom: 4.3125rem;
 }

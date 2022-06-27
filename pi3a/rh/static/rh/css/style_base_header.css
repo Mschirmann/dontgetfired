@@ -1,8 +1,8 @@
 :root {
-  --rh-gray: #E4E3E2;
-  --rh-green: #28734E;
-  --rh-white: #FEFEFE;
-  --rh-black-text: rgba(0,0,0, 0.75);
+  --rh-gray: #e4e3e2;
+  --rh-green: #28734e;
+  --rh-white: #fefefe;
+  --rh-black-text: rgba(0, 0, 0, 0.75);
 }
 
 * {
@@ -21,6 +21,7 @@ body {
   font-size: 0.875rem;
   padding-top: 1.25rem;
   background-color: white;
+  height: 94.1vh;
 }
 
 a {
@@ -47,10 +48,7 @@ a {
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  /* gap: 132.5px; */
 }
-
-
 
 main {
   display: flex;
@@ -58,16 +56,16 @@ main {
 }
 
 .content {
-  background-color: #E4E3E2;
+  background-color: #e4e3e2;
   width: 100%;
-  height: 95.35vh;
+  height: 95.2vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .btn_user_home {
-  background-color: #28734E;
+  background-color: #28734e;
   color: #fff;
   font-size: 0.875rem;
   font-weight: 500;
@@ -78,7 +76,7 @@ main {
   height: 1.25rem;
 }
 
-@media screen and (max-width:1200px) { 
+@media screen and (max-width: 1200px) {
   .side {
     width: 90%;
   }
