@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f1f1f1;
+		}
+		
+		form {
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 8px;
+			max-width: 600px;
+			margin: 0 auto;
+			margin-top: 100px;
+		}
+		
+		h1 {
+			text-align: center;
+		}
+		
+		input[type=text], input[type=password] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+		
+		button[type=submit] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			width: 100%;
+		}
+
+		button[type=submit]:hover {
+			background-color: #45a049;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		<h1>Login</h1>
+		<label for="username">Username:</label><br>
+		<input type="text" id="username" name="username"><br>
+		<label for="password">Password:</label><br>
+		<input type="password" id="password" name="password"><br><br>
+		<button type="submit" id="login-button">Login</button>
+	</form>
+</body>
+</html>
+
+<script>
+    const loginForm = document.querySelector('form');
+    loginForm.addEventListener('submit', loginUser);
+
+    function loginUser(event) {
+    event.preventDefault(); //prevent the default form submission behavior
+    
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    
+    //perform validation or authentication logic here
+    if (username === 'teste' && password === 'teste123') {
+        //redirect to the dashboard page
+        window.location.href = '/rh';
+    } else {
+        //display error message or perform any other necessary action
+        alert('Usuário ou senha inválidos!')
+    }
+    }
+
+</script>
