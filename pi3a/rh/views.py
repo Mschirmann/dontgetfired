@@ -1,51 +1,43 @@
-from django.views import generic
+from django.views.generic import TemplateView, DetailView, ListView
 from .models import User, Time_sheet, Holidays, Vacations
 
 
-class HomeView(generic.TemplateView):
-    template_name = "rh/home.html"
-
-
-class LoginView(generic.TemplateView):
-    template_name = "rh/login.html"
-
-
-class UserRegisterView(generic.TemplateView):
+class UserRegisterView(TemplateView):
     model = User
     template_name = "rh/user_form.html"
 
 
-class UserDetailView(generic.DetailView):
+class UserDetailView(DetailView):
     model = User
     template_name = "rh/user_detail.html"
 
 
-class UserListView(generic.ListView):
+class UserListView(ListView):
     model = User
     template_name = "rh/user_list.html"
     context_object_name = "user_list"
 
 
-class TimesheetListView(generic.ListView):
+class TimesheetListView(ListView):
     model = Time_sheet
     template_name = "rh/timesheet_list.html"
 
 
-class TimesheetRegisterView(generic.TemplateView):
+class TimesheetRegisterView(TemplateView):
     model = Time_sheet
     template_name = "rh/timesheet_form.html"
 
 
-class VacationListView(generic.ListView):
+class VacationListView(ListView):
     model = Vacations
     template_name = "rh/vacation_list.html"
 
 
-class VacationRegisterView(generic.TemplateView):
+class VacationRegisterView(TemplateView):
     model = Vacations
     template_name = "rh/vacation_form.html"
 
 
-class HolidayListView(generic.ListView):
+class HolidayListView(ListView):
     model = Holidays
     template_name = "rh/holiday_list.html"
