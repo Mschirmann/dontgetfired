@@ -19,8 +19,14 @@ class UserListView(ListView):
 
 
 class TimesheetListView(ListView):
-    model = Time_sheet
     template_name = "rh/timesheet_list.html"
+    context_object_name = "timesheet_list"
+
+    def get_queryset(self):
+        queryset = Time_sheet.objects.all()
+        if self.request.user.is_authenticated:
+            Time_sheet.objects.filter(fk_user=self.request.user)
+        return queryset
 
 
 class TimesheetRegisterView(TemplateView):
