@@ -25,3 +25,6 @@ class Holidays(models.Model):
     day = models.CharField(max_length=2)
     month = models.CharField(max_length=2)
     year = models.CharField(max_length=4)
+
+class NewUser(models.Model):
+    pass

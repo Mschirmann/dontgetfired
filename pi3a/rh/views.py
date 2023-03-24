@@ -53,6 +53,10 @@ class UserRegisterView(TemplateView):
     model = User
     template_name = "rh/user_form.html"
 
+class NewUserView(TemplateView):
+    model = User
+    template_name = "rh/user_register.html"
+
 
 class UserDetailView(DetailView):
     model = User
@@ -98,3 +102,4 @@ class VacationRegisterView(TemplateView):
 class HolidayListView(ListView):
     model = Holidays
     template_name = "rh/holiday_list.html"
+

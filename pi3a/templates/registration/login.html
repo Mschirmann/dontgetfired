@@ -8,6 +8,7 @@
 
 
 
+<link rel="stylesheet" href="{% static 'rh/css/style_global.css' %}">
 <link rel="stylesheet" href="{% static 'rh/css/style_login.css' %}">
 
 <div style="background-color: green; height: 100vh; width: 4.9375rem;">
@@ -25,11 +26,9 @@
         {{ form.as_p }}
       </p>
       <button class="btn btn_green" type="submit" style="font-weight: 100;">LOGIN</button>
-      <p id="password_reset"><i>Forget your password?<a href="#">Click here</a></i></p>
+      <p id="password_reset"><i>Forget your password?<a href="{% url 'rh:user_register' %}">Click here</a></i></p>
     </div>
-
   </form>
-
 </div>
 
 <div id="logo_login_rh">

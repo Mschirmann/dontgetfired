@@ -1,10 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'base/base_page_header.html' %}
 
 {% block title %}Meu Perfil{% endblock %}
 
 {% block content %}
+
 {% if user.is_authenticated %}
-	<header>
+
+<div>
+	
+</div>
 		<nav>
 			<h2>Menu</h2>
 			<ul>
@@ -14,8 +18,7 @@
 				<p><a href="{% url 'logout' %}">Sair</a></p>
 			</ul>
 		</nav>
-	</header>
-	<main>
+	<div>
 		<section>
 			<h2>Meu Perfil</h2>
 			<h3>Hi, {{ user.first_name }}!</h3>
@@ -51,10 +54,14 @@
 				{% endfor %}
 			</ul>
 		</section>
-	</main>
+	</div>
 	
 {% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a>
+	<body style="background-color: orange;">
+		<p>You are not logged in</p>
+		<a href="{% url 'login' %}">Log In</a>
+	</body>
+
 {% endif %}
+
 {% endblock %}
