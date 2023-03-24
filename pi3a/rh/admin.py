@@ -5,4 +5,3 @@ from .models import Time_sheet, Vacations, Holidays
 admin.site.register(Time_sheet)
 admin.site.register(Vacations)
 admin.site.register(Holidays)
-# admin.site.register(NewUser)

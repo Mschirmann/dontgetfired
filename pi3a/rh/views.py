@@ -57,6 +57,10 @@ class NewUserView(TemplateView):
     model = User
     template_name = "rh/user_register.html"
 
+class NewUserHome(TemplateView):
+    model = User
+    template_name = "rh/home_admin.html"
+
 
 class UserDetailView(DetailView):
     model = User

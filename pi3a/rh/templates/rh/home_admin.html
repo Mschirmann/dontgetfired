@@ -1,0 +1,67 @@
+{% extends 'base/base_page_header.html' %}
+
+{% block title %}Meu Perfil{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<div>
+	
+</div>
+		<nav>
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="">Meu Perfil</a></li>
+				<li><a href="{% url 'rh:users'%}">Usuários</a></li>
+				<li><a href="{% url 'rh:timesheet_list'%}">Livro ponto</a></li>
+				<p><a href="{% url 'logout' %}">Sair</a></p>
+			</ul>
+		</nav>
+	<div>
+		<section>
+			<h2>Meu Perfil</h2>
+			<h3>Hi, {{ user.first_name }}!</h3>
+			<p>CPF: {{ user.username }}</p>
+			<p>Turno: 09:00 - 18:00</p>
+			{% if vacations %}
+				<p> Férias de {{vacations.start_date|date:"d/m/Y"}} a {{vacations.end_date|date:"d/m/Y"}}</p>
+			{% endif %}
+		</section>
+		<section>
+			{% if holiday %}
+				<p> Hoje é feriado: {{ holiday.description}}. Vai dormir! </p>
+			{% endif %}
+		</section>
+		<section>
+			<form method="post" action="{% url 'rh:timesheet_register' %}">
+				{% csrf_token %}
+				<div>
+					<button type="submit" name="register" value={{ user.id }}>
+						REGISTRAR PONTO 
+					</button>
+				</div>
+			</form>
+		</section>
+		<section>
+			<h2>Últimos Registros</h2>
+			<ul>
+				{% for register in last_registers %}
+					<li>{{register.created_at|time:"H:i"}} | 
+						{{register.created_at|date:"d.m"}} | 
+						{% if forloop.counter|divisibleby:2 %}SAÍDA{% else %}ENTRADA{% endif %}
+					</li>
+				{% endfor %}
+			</ul>
+		</section>
+	</div>
+	
+{% else %}
+	<body style="background-color: orange;">
+		<p>You are not logged in</p>
+		<a href="{% url 'login' %}">Log In</a>
+	</body>
+
+{% endif %}
+
+{% endblock %}
