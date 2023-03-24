@@ -1,12 +1,40 @@
-{% extends 'base.html' %}
+{% extends 'base/base_page_no_header.html' %}
+
+{% load static %}
 
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<h2>Log In</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Log In</button>
-</form>
+
+
+
+<link rel="stylesheet" href="{% static 'rh/css/style_login.css' %}">
+
+<div style="background-color: green; height: 100vh; width: 4.9375rem;">
+  <!-- <img src="{% static 'rh/img/' %}" alt=""> -->
+</div>
+
+<div class="login_form">
+
+  <img src="{% static 'rh/img/Groupavatar.svg' %}" alt="avatar login">
+  <h2 style="font-size: 30px; font-weight: 50; font-family: sans-serif;">LOGIN</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form_login" style="padding: 0; margin: 0; display: flex; flex-direction: column;">
+      <p style="display: flex;">
+        {{ form.as_p }}
+      </p>
+      <button class="btn btn_green" type="submit" style="font-weight: 100;">LOGIN</button>
+      <p id="password_reset"><i>Forget your password?<a href="#">Click here</a></i></p>
+    </div>
+
+  </form>
+
+</div>
+
+<div id="logo_login_rh">
+  <img src="{% static 'rh/img/Group 14icons.svg'%}" alt="">
+</div>
+
+
 {% endblock %}
