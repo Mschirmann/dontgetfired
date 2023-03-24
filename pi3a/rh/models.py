@@ -25,3 +25,7 @@ class Holidays(models.Model):
     day = models.CharField(max_length=2)
     month = models.CharField(max_length=2)
     year = models.CharField(max_length=4)
+
+# modelo de página de opões do admin
+class HomeAdmin(models.Model):
+    pass

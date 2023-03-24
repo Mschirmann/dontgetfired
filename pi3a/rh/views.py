@@ -6,6 +6,13 @@ class UserRegisterView(TemplateView):
     model = User
     template_name = "rh/user_form.html"
 
+class UserRegisterView1(TemplateView):
+    model = User
+    template_name = "rh/user_register.html"
+
+class UserHomeView(TemplateView):
+    model = User
+    template_name = "rh/user_home.html"
 
 class UserDetailView(DetailView):
     model = User

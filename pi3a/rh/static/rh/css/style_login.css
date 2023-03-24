@@ -1,0 +1,120 @@
+:root {
+  --black: #00000;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+header {
+  width: 100%;
+  background-color: #28734e;
+  height: 3.125rem;
+}
+
+main {
+  width: 100%;
+  text-align: center;
+  height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#titulo_registro_form {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.875rem;
+  font-weight: 50;
+  text-align: center;
+  color: #51616b;
+}
+
+form {
+  margin-top: 3.3125rem;
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+input {
+  font-size: 11px;
+  text-align: start;
+  border-radius: 20rem;
+  margin-top: 0.6125rem;
+  border-radius: 0.4375rem;
+  height: 2.575rem;
+  width: 31rem;
+  border: 1px solid gray;
+}
+
+.buttons_register {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.6125rem;
+}
+
+.btn {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fefefe;
+  margin-top: 0.6125rem;
+  height: 40px;
+  width: 496px;
+  border: none;
+}
+
+.btn_green {
+  background-color: #28734e;
+}
+
+.btn_orange {
+  background-color: #ff6600;
+}
+
+/* Login styles */
+
+#main_base_page_login {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+#logo_login_rh {
+    width: 26.0625rem;
+    height: 6.5625rem;
+}
+
+label{
+    visibility: hidden;
+}
+
+p > label {
+  display: flex;
+  flex-direction: column;
+
+}
+
+/* .form_login {
+  margin: 0;
+  display: flex;
+
+} */
+
+#password_reset {
+  font-weight: 50;
+  font-size: 12px;
+  margin-top: 22.5px;
+}
+
+

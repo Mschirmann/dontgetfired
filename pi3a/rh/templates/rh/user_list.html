@@ -1,9 +1,14 @@
-<!DOCTYPE html>
-<html>
+<!-- <!DOCTYPE html> -->
+{% extends 'base_page_header.html' %}
+{% load static %}
+{% block content %}
+<!-- <html> -->
   <head>
+    <link rel="stylesheet" href="{% static 'rh/css/style_login.css' %}">
+
     <title>My User List</title>
-  </head>
-  <body>
+  <!-- </head>
+  <body> -->
     <h1>My User List</h1>
     <ul>
         {% for user in user_list %}
@@ -13,5 +18,7 @@
             <li>user 3</li>
             <li>user 4</li>
     </ul>
-  </body>
-</html>
+
+{% endblock %}    
+  <!-- </body>
+</html> -->
