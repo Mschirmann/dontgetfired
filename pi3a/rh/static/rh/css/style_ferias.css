@@ -1,0 +1,121 @@
+:root {
+    --rh-gray: #E4E3E2;
+    --rh-green: #28734E;
+    --rh-white: #FEFEFE;
+    --rh-black-text: rgba(0,0,0, 0.75);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: var(--rh-gray);
+}
+
+.box {
+    margin-top: 53px;
+}
+
+.box__titulo__principal {
+    color: var(--rh-green);
+    font-size: 18px;
+}
+
+.box_ferias_form {
+    height: 296px; 
+    width: 900px;
+}
+
+
+.box_ferias_content {
+    background-color: var(--rh-white);
+}
+
+.box_ferias_buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.box_ferias_form {
+    /* display: flex; */
+    /* flex-direction: column;
+    align-items: center; */
+    height: 296px;
+    width: 900px;
+    background-color: var(--rh-white);
+}
+
+#form_ferias {
+    display: flex;
+    justify-content: space-between;
+}
+
+.campos {
+    display: grid;
+    grid-column: auto;
+}
+
+.form__campos__titulo {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--rh-black-text);
+    text-transform: uppercase;
+}
+
+#selecao {
+    width: 393px;
+    height: 32px;
+}
+
+.ferias__textarea {
+    display: flex;
+    justify-content: stretch;
+    align-items: end;
+    /* width: 450px; */
+    height: 296px;
+}
+
+.descricao {
+    display: flex;
+    flex-direction: column;
+    width: 403px;
+    height: 77px;
+    margin: 161px 39px 29px ;
+    /* margin-left: 27px; */
+}
+
+#descricao {
+    border: 1px solid var(--rh-black-text);
+    border-radius: 5px;
+}
+
+.ferias__campos {
+    display: flex;
+    margin-left: 38px;
+    margin-top: 26px;
+    margin-bottom: 30px;
+}
+
+.form_ferias__datas {
+    display: flex;
+    margin-top: 25px; 
+    margin-bottom: 6px;
+    gap: 19px;
+}
+
+.ferias__form__campos__date {
+    width: 187px;
+    height: 32px;
+    border-radius: 5px;
+}

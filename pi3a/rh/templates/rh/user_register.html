@@ -6,33 +6,31 @@
 
 {% block content %}
 
-
 <!-- load static files -->
-
-
 
 <link rel="stylesheet" href="{% static 'rh/css/style_global.css' %}">
 <link rel="stylesheet" href="{% static 'rh/css/style_login.css' %}">
+<link rel="stylesheet" href="{% static 'rh/css/style_register.css' %}">
 
-<section id="form_register">
+<div class="section__form_register">
     <h2 id="titulo_registro_form">CADASTRO DE FUNCIONÁRIOS</h2>
-    
-    <form action="" method="post">
-        {% csrf_token %}
+    <div class="teste">
 
-        <input type="text" placeholder="N° CPF" required maxlength="100">
-        <input type="text" placeholder="Nome" required maxlength="100">
-        <input type="text" placeholder="Sobrenome" required maxlength="100">
-        <!-- <input type="email" placeholder="Email" required maxlength="100"> -->
-        <input type="password" placeholder="Senha" required maxlength="100">
-        <input type="password" placeholder="Repita a senha" required maxlength="100">
-        
-        <div class="buttons_register">
-            <button class="btn btn_green" type="submit" >REGISTER</button>
-            <button class="btn btn_orange">BACK TO START MENU</button>
-        </div>
+        <form class="register__form" action="" method="post">
+
+            <input class="register__form__input" type="text" placeholder="N° CPF" required maxlength="100">
+            <input class="register__form__input" type="text" placeholder="Nome" required maxlength="100">
+            <input class="register__form__input" type="text" placeholder="Sobrenome" required maxlength="100">
+            <input class="register__form__input" type="password" placeholder="Senha" required maxlength="100">
+            <input class="register__form__input" type="password" placeholder="Repita a senha" required maxlength="100">
+
+    </div>
+    <div class="buttons_register">
+        <button class="btn btn_green" type="submit">REGISTER</button>
+        <button class="btn btn_orange">BACK TO START MENU</button>
+    </div>
     </form>
-</section>
+</div>
 
 
 {% endblock %}

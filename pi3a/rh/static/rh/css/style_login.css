@@ -1,8 +1,124 @@
 main {
     width: 100%;
     text-align: center;
-    height: 92vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
   }
+
+  label{
+    visibility: hidden;
+}
+
+p > label {
+  display: flex;
+  flex-direction: column;
+} 
+
+.btn_login{
+  width: 18.2375rem;
+  height: 2.52rem;
+  margin-top: 0.625rem;
+  border-radius: 5px;
+  border: none;
+  color: #FFFF;
+}
+
+input {
+  width: 18.2375rem;
+  height: 2.52rem;
+  border-radius: 3px;
+}
+
+#id_username {
+  background: url("../img/Groupicons.svg") no-repeat;
+  background-position-y: center; 
+}
+
+#id_password {
+  background: url("../img/Groupicons-1.svg") no-repeat;
+  background-position-y: center;
+}
+
+/* Login styles */
+
+#main_base_page_login {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  /* gap: 273px; */
+  /* margin-inline-end: 15.5625rem; */
+}
+
+#logo_login_rh {
+  margin-left: 12.54rem;
+  width: 26.0625rem;
+  height: 6.5625rem;
+}
+
+.form_login {
+margin: 0;
+display: flex;
+
+}
+
+.login_form {
+  margin-left: 17.1125rem;
+}
+
+
+#password_reset {
+font-weight: 50;
+font-size: 12px;
+margin-top: 22.5px;
+}
+
+#login__barra_green {
+  background-color: green; 
+  height: 100vh;
+  width: 4.9375rem;
+}
+
+@media only screen and (max-width: 540px) {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+   main {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    justify-content: center;
+  } 
+
+  .login_form {
+    margin: 5rem 0 0 0;    
+    width: fit-content;
+  }
+
+  #logo_login_rh {
+    display: flex;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #login__barra_green {
+    width: 100vw;
+    height: 1.5rem;
+  }
+
+
+  img {
+    width: 40%;
+  }
+
+  #login__avatar {
+    width: 20%;
+    height: 20%;
+  }
+}

@@ -6,21 +6,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>{% block title %} Don't Get Fired! -  {% endblock %}</title>
-    <style>
+    {% block 'link' %} 
+    {% endblock %}
+    <title>{% block title %} Don't Get Fired!  {% endblock %}</title>
+    <!-- <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-    </style>
+    </style> -->
 </head>
 
 <body>
-    <header style="background-color: green;">
+    <header style="background-color: #28734E;">
         <h1 >
-            <img style="margin-left: 1.5rem; padding-top: 0.875rem;" src="{% static 'rh/img/DGF_WHITE_LOGO.png' %}" alt="teste">
+            <img style="margin-left: 1.5rem; padding: 0.875rem 0 0.875rem 0;" src="{% static 'rh/img/DGF_WHITE_LOGO.png' %}" alt="teste">
         </h1>
     </header>
     <main>

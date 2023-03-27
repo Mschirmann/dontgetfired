@@ -2,22 +2,23 @@
 
 {% load static %}
 
+{% block 'link' %}
+<link rel="stylesheet" href="{% static 'rh/css/style_global.css' %}">
+<link rel="stylesheet" href="{% static 'rh/css/style_login.css' %}">
+{% endblock %}
+
 {% block title %}Login{% endblock %}
 
 {% block content %}
 
 
-
-<link rel="stylesheet" href="{% static 'rh/css/style_global.css' %}">
-<link rel="stylesheet" href="{% static 'rh/css/style_login.css' %}">
-
-<div style="background-color: green; height: 100vh; width: 4.9375rem;">
+<div id="login__barra_green">
   <!-- <img src="{% static 'rh/img/' %}" alt=""> -->
 </div>
 
 <div class="login_form">
 
-  <img src="{% static 'rh/img/Groupavatar.svg' %}" alt="avatar login">
+  <img id="login__avatar" src="{% static 'rh/img/Groupavatar.svg' %}" alt="avatar login">
   <h2 style="font-size: 30px; font-weight: 50; font-family: sans-serif;">LOGIN</h2>
   <form method="post">
     {% csrf_token %}
@@ -25,7 +26,7 @@
       <p style="display: flex;">
         {{ form.as_p }}
       </p>
-      <button class="btn btn_green" type="submit" style="font-weight: 100;">LOGIN</button>
+      <button class="btn_login btn_green" type="submit" style="font-weight: 100;">LOGIN</button>
       <p id="password_reset"><i>Forget your password?<a href="{% url 'rh:user_register' %}">Click here</a></i></p>
     </div>
   </form>

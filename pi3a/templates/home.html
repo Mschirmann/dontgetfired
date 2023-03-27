@@ -1,12 +1,12 @@
 {% extends 'base/base_page_no_header.html' %}
 {% load static %}
 
-{% block title %}Home Admin{% endblock %}
+{% block title %}Home - Admin{% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
 
-<link rel="stylesheet" href="{% static 'rh/css/global.css' %}">
+<link rel="stylesheet" href="{% static 'rh/css/style_global.css' %}">
 <link rel="stylesheet" href="{% static 'rh/css/style_user_home.css' %}">
 
 	<!-- <h2>Hi {{ user.username }}!</h2> -->

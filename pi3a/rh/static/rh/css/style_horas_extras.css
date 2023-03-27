@@ -1,0 +1,86 @@
+:root {
+    --rh-gray: #E4E3E2;
+    --rh-green: #28734E;
+    --rh-white: #FEFEFE;
+    --rh-black-text: rgba(0,0,0, 0.75);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: var(--rh-gray);
+}
+
+main {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; ;
+}
+
+.box_horas_extras {
+    background-color: #FEFEFE;
+    width: 56.25rem;
+    height: 33.75rem;
+}
+
+.box {
+    margin-top: 3rem;
+}
+
+.box_horas_extras {
+    margin-top: 0.5625rem;
+    display: flex; 
+    gap: 0.825rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.selecao {
+    display: flex;
+    flex-direction: column;
+    margin-top: 26px;
+}
+
+select, input {
+    width: 393px; 
+    height: 32px;
+    margin-top:  10px;
+}
+
+.box_contador {
+    background-color: var(--rh-green);
+    margin-top: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 393px;
+    height: 74px;
+    /* padding: 43px 42px ; */
+    padding-left: 43px;
+    padding-right: 40px;
+}
+
+.contador {
+    display: flex;
+    font-size: 1.625rem;
+    color:var(--rh-green);
+    font-weight: bold;
+    background-color: #E4E3E2;
+    border-radius: 7px;
+    height: 48px;
+    width: 185px;
+    align-items: center;
+    justify-content: center;
+}
+
+.clock {
+    height: 45px;
+    width: 45px;
+}

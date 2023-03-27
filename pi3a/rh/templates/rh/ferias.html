@@ -1,0 +1,82 @@
+{% extends 'base/base_page_header.html' %}
+
+{% load static %}
+
+{% block 'link'%}
+
+<link rel="stylesheet" href="{% static 'rh/css/style_ferias.css' %}">
+<link rel="stylesheet" href="{% static 'rh/css/style_global.css' %}">
+{% endblock %}
+
+{% block title %}Férias{% endblock %}
+
+{% block content %}
+
+<div class="box">
+    <div class="box_ferias_titulo">
+        <h4 class="box__titulo__principal">Registro de Férias e Afastamento</h4>
+    </div>
+    <div class="box_ferias_form">
+        <form id="form_ferias" action="" method="post">
+            
+            <div class="ferias__campos">
+                <div class="campos">
+                    <h4 class="form__campos__titulo">Adicionar Período de Férias ou Afastamento</h4>
+                    <div>
+                        <select name="selecao" id="selecao">
+                         <option value="Selecione funcionário" selected>Selecine funcionário</option>
+                        </select>
+                    </div>
+    
+                    <div class="form_ferias__radio_button__tipo" style="margin-top: 16px;">
+                        <label>Tipo*</label>
+                        <div style="display: flex; gap:13px; margin-top: 13px;">
+    
+                            <div>
+                                <input type="radio" name="tipo" id="ferias" value="ferias" checked>
+                                <label for="ferias">Férias</label>
+                            </div>
+    
+                            <div>
+                                <input type="radio" name="tipo" value="tipo"  id="afastamento" >
+                                <label for="afastamento">Afastamento</label>
+                            </div>
+    
+                        </div>
+                    </div>
+    
+                    <div class="form_ferias__datas">
+    
+                        <div>
+                            <label for="">Data ínicio*</label>
+                            <input class="ferias__form__campos__date" type="date">
+                        </div>
+    
+                        <div>
+                            <label for="">Data de término</label>
+                            <input class="ferias__form__campos__date" type="date">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="ferias__textarea">
+                <div class="descricao">
+                    <label for="descricao">Notas*</label>
+                    <textarea name="descricao" id="descricao" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="box_ferias_buttons">
+        <button style="width: 27.8125rem; 
+        height: 2.5rem;" class="btn btn_green btn_ferias">Register</button>
+        <button style="width: 27.8125rem; 
+        height: 2.5rem;" class="btn btn_orange">Back to start menu</button>
+    </div>
+</div>
+
+{% endblock %}
