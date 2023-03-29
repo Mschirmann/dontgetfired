@@ -17,7 +17,7 @@
     <div class="teste">
 
         <form class="register__form" action="" method="post">
-
+            {% csrf_token %}
             <input class="register__form__input" type="text" placeholder="N° CPF" required maxlength="100">
             <input class="register__form__input" type="text" placeholder="Nome" required maxlength="100">
             <input class="register__form__input" type="text" placeholder="Sobrenome" required maxlength="100">

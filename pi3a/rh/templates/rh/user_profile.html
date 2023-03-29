@@ -11,11 +11,11 @@
     <aside class="side">
             <div class="lateral_link_meu_perfil">
                 <img class="img_aside" src="{% static 'rh/img/noun-user-home-user.svg' %}" alt="">
-                <a href="#" style="margin-left: 0.5625rem;">Meu Perfil</a>
+                <a href="{% url 'rh:user_profile'%}" style="margin-left: 0.5625rem;">Meu Perfil</a>
             </div>
             <div class="lateral_link_sair" style="margin-top: 0.9375rem;">
                 <img class="img_aside" src="{% static 'rh/img/sair-registros.svg' %}" alt="">
-                <a href="#" style="margin-left: 0.5625rem;">Sair</a>
+                <a href="{% url 'logout' %}" style="margin-left: 0.5625rem;">Sair</a>
             </div>
     </aside>
     
@@ -24,15 +24,21 @@
             <h3>Meu Perfil</h3>
             <div class="meu_perfil">
                 <div class="home_admin_information">
-                    <h3>Nome do Usuário</h3>
-                    <p>CPF:111.111.111-00</p>
+                    <h3>{{user.first_name}} {{ user.last_name}}</h3>
+                    <p>CPF: {{ user.username }}</p>
                     <p>Turno:9:00 - 18:00</p>
+                    {% if vacations %}
                     <div class="periodo_ferias">
-                        <p>Ferias de 05/04/2023 a 20/04/2023</p>
+                        <p> Férias de {{vacations.start_date|date:"d/m/Y"}} a {{vacations.end_date|date:"d/m/Y"}}</p>
                     </div>
+                    {% endif %}
+                    
                 </div>
                 <div class="home_admin_button">
-                    <button class="btn_user_home" type="submit">Registrar Ponto</button>
+                    <form method="post" action="{% url 'rh:timesheet_register' %}">
+                        {% csrf_token %}
+                        <button class="btn_user_home" type="submit"  name="register" value={{ user.id }}>Registrar Ponto</button>
+                    </form>
                     <div class="home_admin_time">
                         <img src="" alt="">
                         <p>Previsão de Saída</p>
@@ -45,23 +51,12 @@
         <div class="agrupa_lista_registros">
             <h3>Últimos Registros</h3>
             <div class="lista_registros">
-                <li>Registro 1</li>
-                <li>Registro 2</li>
-                <li>Registro 3</li>
-                <li>Registro 3</li>
-                <li>Registro 3</li>
-                <li>Registro 3</li>
-                <li>Registro 3</li>
-                <li>Registro 3</li>
-                <li>Registro 3</li>
-                <li>Registro 3</li>
-                <li>Registro 3</li>
-                <li>Registro 3</li>
-                <li>Registro 3</li>
-                <li>Registro 3</li>
-                <li>Registro 3</li>
-                <li>Registro 3</li>
-                <li>Registro 3</li>
+                    {% for register in last_registers %}
+                        <li>{{register.created_at|time:"H:i"}} | 
+                            {{register.created_at|date:"d.m"}} | 
+                            {% if forloop.counter|divisibleby:2 %}SAÍDA{% else %}ENTRADA{% endif %}
+                        </li>
+                    {% endfor %}
             </div>
         </div>
 

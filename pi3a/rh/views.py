@@ -2,10 +2,22 @@ import datetime
 from django.views.generic import TemplateView, DetailView, ListView, View
 from .models import User, Time_sheet, Holidays, Vacations
 from django.http import HttpResponse
+from django.shortcuts import redirect, render
+
+
+class UserHomeView(TemplateView):
+    def get_template_names(self):
+        if self.request.user.is_authenticated:
+            if self.request.user.is_staff:
+                return ["home.html"]
+            else:
+                return ["rh/user_profile.html"]
+        return ["login.html"]
 
 
 class UserProfileView(TemplateView):
     context_object_name = "user_profile"
+    template_name = "rh/user_profile.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -27,10 +39,12 @@ class UserProfileView(TemplateView):
 
     def get_recently_user_timesheet(self):
         if self.request.user.is_authenticated:
+            print("get timesheet")
             # get last 5 timesheet register
             last_registers = Time_sheet.objects.filter(
                 fk_user=self.request.user
             ).order_by("-created_at")[:5][::-1]
+            print(last_registers)
             return last_registers
         return None
 
@@ -53,13 +67,10 @@ class UserRegisterView(TemplateView):
     model = User
     template_name = "rh/user_form.html"
 
+
 class NewUserView(TemplateView):
     model = User
     template_name = "rh/user_register.html"
-
-class NewUserHome(TemplateView):
-    model = User
-    template_name = "rh/home_admin.html"
 
 
 class UserDetailView(DetailView):
@@ -106,4 +117,3 @@ class VacationRegisterView(TemplateView):
 class HolidayListView(ListView):
     model = Holidays
     template_name = "rh/holiday_list.html"
-
