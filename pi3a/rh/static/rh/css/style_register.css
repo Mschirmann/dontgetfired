@@ -1,4 +1,30 @@
 .teste {
     display: flex;
   }
-  
+
+.section__form_register {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (max-width: 560px) {
+
+    #titulo_registro_form {
+      font-size: 1.4rem;
+    }
+
+    .section__form_register {
+      margin-top: 2rem;
+    }
+
+    .register__form__input {
+      width: 20rem;
+    }
+
+    .btn {
+      width: 20rem;
+    }
+  }

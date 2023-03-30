@@ -39,13 +39,6 @@
   flex-direction: column;
 }
 
-.section__form_register {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 
 .register__form__input {
   font-size: 11px;

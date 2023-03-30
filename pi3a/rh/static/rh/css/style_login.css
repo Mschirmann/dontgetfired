@@ -80,6 +80,14 @@ margin-top: 22.5px;
   width: 4.9375rem;
 }
 
+input::placeholder {
+  background-image: none;
+}
+
+input:focus-visible {
+  background-image: none;
+}
+
 @media only screen and (max-width: 540px) {
   * {
     margin: 0;
@@ -111,7 +119,6 @@ margin-top: 22.5px;
     width: 100vw;
     height: 1.5rem;
   }
-
 
   img {
     width: 40%;
