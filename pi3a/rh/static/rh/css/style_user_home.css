@@ -86,7 +86,8 @@ li:hover {
     width: 70%;
   }
 
-  box, img {
+  box,
+  img {
     width: 70%;
     justify-content: center;
   }

@@ -1,0 +1,65 @@
+{% extends 'base/base_page_header.html' %}
+
+{% load static %}
+
+{% block title %} Home - User {% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'rh/css/style_home_user.css' %}">
+
+    <aside class="side">
+            <div class="lateral_link_meu_perfil">
+                <img class="img_aside" src="{% static 'rh/img/noun-user-home-user.svg' %}" alt="">
+                <a href="{% url 'rh:user_profile'%}" style="margin-left: 0.5625rem;">Meu Perfil</a>
+            </div>
+            <div class="lateral_link_sair" style="margin-top: 0.9375rem;">
+                <img class="img_aside" src="{% static 'rh/img/sair-registros.svg' %}" alt="">
+                <a href="{% url 'logout' %}" style="margin-left: 0.5625rem;">Sair</a>
+            </div>
+    </aside>
+    
+    <section  class="content">
+        <div class="agrupa_meu_perfil">
+            <h3>Meu Perfil</h3>
+            <div class="meu_perfil">
+                <div class="home_admin_information">
+                    <h3>{{user.first_name}} {{ user.last_name}}</h3>
+                    <p>CPF: {{ user.username }}</p>
+                    <p>Turno:9:00 - 18:00</p>
+                    {% if vacations %}
+                    <div class="periodo_ferias">
+                        <p> Férias de {{vacations.start_date|date:"d/m/Y"}} a {{vacations.end_date|date:"d/m/Y"}}</p>
+                    </div>
+                    {% endif %}
+                    
+                </div>
+                <div class="home_admin_button">
+                    <form method="post" action="{% url 'rh:timesheet_register' %}">
+                        {% csrf_token %}
+                        <button class="btn_user_home" type="submit"  name="register" value={{ user.id }}>Registrar Ponto</button>
+                    </form>
+                    <div class="home_admin_time">
+                        <img src="" alt="">
+                        <p>Previsão de Saída</p>
+                        <p>00:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="agrupa_lista_registros">
+            <h3>Últimos Registros</h3>
+            <div class="lista_registros">
+                    {% for register in last_registers %}
+                        <li>{{register.created_at|time:"H:i"}} | 
+                            {{register.created_at|date:"d.m"}} | 
+                            {% if forloop.counter|divisibleby:2 %}SAÍDA{% else %}ENTRADA{% endif %}
+                        </li>
+                    {% endfor %}
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}

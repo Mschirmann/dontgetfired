@@ -9,48 +9,6 @@
   box-sizing: border-box;
 }
 
-
-/* header {
-  width: 100%;
-  background-color: #28734e;
-  height: 3.125rem;
-} */
-
-.container {
-  width: 100%;
-  text-align: center;
-  height: 92vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#titulo_registro_form {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 1.875rem;
-  font-weight: 50;
-  text-align: center;
-  color: #51616b;
-}
-
-.register__form {
-  margin-top: 3.3125rem;
-  display: flex;
-  flex-direction: column;
-}
-
-
-.register__form__input {
-  font-size: 11px;
-  text-align: start;
-  border-radius: 20rem;
-  margin-top: 0.6125rem;
-  border-radius: 0.4375rem;
-  height: 2.575rem;
-  width: 31rem;
-  border: 1px solid gray;
-}
-
 .buttons_register {
   display: flex;
   flex-direction: column;
@@ -63,18 +21,44 @@
   font-weight: 600;
   color: #fefefe;
   margin-top: 0.6125rem;
-  height: 40px;
-  width: 496px;
+  height: 2.5rem;
+  width: 31rem;
   border: none;
+  border-radius: 0.5rem;
 }
 
 .btn_green {
   background-color: #28734e;
 }
 
-.btn_orange {
-  background-color: #ff6600;
+@media (max-width: 560px) {
+  #titulo_registro_form {
+    font-size: 1rem;
+  }
+
+  .section__form_register {
+    margin-top: 2rem;
+  }
+
+  .register__form__input {
+    width: 20rem;
+  }
+
+  .btn {
+    width: 25rem;
+  }
 }
 
+@media screen and (max-width: 1079px){
+  .titulo_registro_form {
+    width: 25rem;
+  }
 
+  .btn {
+    width: 25rem;
+  }
 
+  h2 {
+    width: 70%;
+  }
+}

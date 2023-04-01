@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block 'link' %} 
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'rh/css/style_base_header_cadastro.css' %}">
+    <title>{% block title %} Don't Get Fired!  {% endblock %}</title>
+</head>
+
+<body>
+    <header style="background-color: #28734E;">
+        <h1 >
+            <img style="margin-left: 1.5rem; padding: 0.875rem 0 0.875rem 0;" src="{% static 'rh/img/DGF_WHITE_LOGO.png' %}" alt="teste">
+        </h1>
+    </header>
+    <main>
+
+    <aside class="side">
+            <div class="lateral_link_meu_perfil">
+                <img class="img_aside" src="{% static 'rh/img/noun-user-home-user.svg' %}" alt="">
+                <a href="{% url 'rh:user_profile'%}">Meu Perfil</a>
+            </div>
+            <div class="lateral_link_meu_perfil">
+                <img class="img_aside" src="{% static 'rh/img/register-icons-lateral.svg' %}" alt="">
+                <a href="{% url 'rh:user_register'%}">Cadastro</a>
+            </div>
+            <div class="lateral_link_meu_perfil">
+                <img class="img_aside" src="{% static 'rh/img/icon-lateral-sun.svg' %}" alt="">
+                <a href="{% url 'rh:timesheet_list'%}">Férias</a>
+            </div>
+            <div class="lateral_link_meu_perfil">
+                <img class="img_aside" src="{% static 'rh/img/time-icon-lateral.svg' %}" alt="">
+                <a href="{% url 'rh:users' %}">Horas Extras</a>
+            </div>
+            <div class="lateral_link_meu_perfil" >
+                <img class="img_aside" src="{% static 'rh/img/sair-registros.svg' %}" alt="">
+                <a href="{% url 'logout' %}">Sair</a>
+            </div>
+    </aside>
+    
+    {% block content %}
+    {% endblock %}
+</main>
+</body>
+
+</html>

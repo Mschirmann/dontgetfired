@@ -1,36 +1,40 @@
-{% extends 'base/base_page_header.html' %}
+{% extends 'base/base_lateral_header_cadastro.html' %}
 
 {% load static %}
 
-{% block title %}Cadastro dos Colaboradores{% endblock %}
+{% block 'link' %}
+<link rel="stylesheet" href="{% static 'rh/css/style_base_header.css' %}">
+<link rel="stylesheet" href="{% static 'rh/css/style_register.css' %}">
+<link rel="stylesheet" href="{% static 'rh/css/style_global.css' %}">
+{% endblock %}
+
+{% block title %} Base {% endblock %}
 
 {% block content %}
 
-<!-- load static files -->
+<section class="content">
+    <div class="agrupa_meu_perfil">
+        <div class="meu_perfil" style="display: flex; flex-direction: column; align-self: center;">
+            <div class="home_admin_information">
 
-<link rel="stylesheet" href="{% static 'rh/css/style_global.css' %}">
-<!-- <link rel="stylesheet" href="{% static 'rh/css/style_login.css' %}"> -->
-<link rel="stylesheet" href="{% static 'rh/css/style_register.css' %}">
+                <h2 id="titulo_registro_form">CADASTRO DE FUNCIONÁRIOS</h2>
+                <form action="" method="post" style="display: flex; flex-direction: column;">
+                <form action="" method="post" style="display: flex; flex-direction: column;">
+                    <input class="register__form__input" type="text" placeholder="N° CPF" required maxlength="100">
+                    <input class="register__form__input" type="text" placeholder="Nome" required maxlength="100">
+                    <input class="register__form__input" type="text" placeholder="Sobrenome" required maxlength="100">
+                    <input class="register__form__input" type="password" placeholder="Senha" required maxlength="100">
+                    <input class="register__form__input" type="password" placeholder="Repita a senha" required maxlength="100">
 
-<div class="section__form_register">
-    <h2 id="titulo_registro_form">CADASTRO DE FUNCIONÁRIOS</h2>
-    <div class="teste">
+                    <button class="btn btn_user_home">REGISTER</button>                   
+                    <div class="buttons_register">
+                    </div>
+                </form>
+            </div>
 
-        <form class="register__form" action="" method="post">
-            {% csrf_token %}
-            <input class="register__form__input" type="text" placeholder="N° CPF" required maxlength="100">
-            <input class="register__form__input" type="text" placeholder="Nome" required maxlength="100">
-            <input class="register__form__input" type="text" placeholder="Sobrenome" required maxlength="100">
-            <input class="register__form__input" type="password" placeholder="Senha" required maxlength="100">
-            <input class="register__form__input" type="password" placeholder="Repita a senha" required maxlength="100">
-
+        </div>
     </div>
-    <div class="buttons_register">
-        <button class="btn btn_green" type="submit">REGISTER</button>
-        <button class="btn btn_orange">BACK TO START MENU</button>
-    </div>
-    </form>
-</div>
 
+</section>
 
 {% endblock %}

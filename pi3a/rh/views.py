@@ -14,6 +14,14 @@ class UserHomeView(TemplateView):
                 return ["rh/user_profile.html"]
         return ["login.html"]
 
+# class AdminVocationsView(TemplateView):
+#     def get_template_names(self):
+#         if self.request.user.is_authenticated:
+#             if self.request.user.is_staff:
+#                 return ["rh/ferias.html"]
+#             else:
+#                 return ["home.html"]
+#         return ["login.html"]
 
 class UserProfileView(TemplateView):
     context_object_name = "user_profile"
@@ -72,6 +80,10 @@ class NewUserView(TemplateView):
     model = User
     template_name = "rh/user_register.html"
 
+class AdminVocationsView(TemplateView):
+    model = User
+    template_name = "rh/ferias.html"
+
 
 class UserDetailView(DetailView):
     model = User
@@ -107,12 +119,6 @@ class TimesheetRegisterView(View):
 class VacationListView(ListView):
     model = Vacations
     template_name = "rh/vacation_list.html"
-
-
-class VacationRegisterView(TemplateView):
-    model = Vacations
-    template_name = "rh/vacation_form.html"
-
 
 class HolidayListView(ListView):
     model = Holidays

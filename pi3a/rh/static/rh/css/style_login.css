@@ -47,8 +47,6 @@ input {
   height: 100vh;
   display: flex;
   justify-content: flex-start;
-  /* gap: 273px; */
-  /* margin-inline-end: 15.5625rem; */
 }
 
 #logo_login_rh {

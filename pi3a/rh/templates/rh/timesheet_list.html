@@ -5,15 +5,16 @@
 <head>
     <title>REGISTRO PONTO</title>
 </head>
+
 <body>
     <h1>Meus registros</h1>
-<ul>
-    {% for time in timesheet_list %}
+    <ul>
+        {% for time in timesheet_list %}
         <li>{{time.created_at}}</li>
         <li>{{time.fk_user.first_name}}</li>
         <li>{{time.description}}</li>
-    {% endfor %}
-</ul>
+        {% endfor %}
+    </ul>
 
 </body>
 

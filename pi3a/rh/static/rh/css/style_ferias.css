@@ -13,14 +13,24 @@
 
 main {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 12.5rem;
+    width: auto;
 }
 
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: var(--rh-gray);
 }
+
+.side {
+    width: 13.125rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    padding-top: 1.25rem;
+    background-color: white;
+    height: 96.375vh;
+  }
+  
 
 .box {
     margin-top: 53px;
@@ -48,9 +58,6 @@ body {
 }
 
 .box_ferias_form {
-    /* display: flex; */
-    /* flex-direction: column;
-    align-items: center; */
     height: 296px;
     width: 900px;
     background-color: var(--rh-white);
@@ -92,7 +99,6 @@ body {
     width: 403px;
     height: 77px;
     margin: 161px 39px 29px ;
-    /* margin-left: 27px; */
 }
 
 #descricao {

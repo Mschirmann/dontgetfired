@@ -6,12 +6,14 @@ from rh.views import (
     TimesheetRegisterView,
     NewUserView,
     UserProfileView,
+    AdminVocationsView
 )
 
 
 app_name = "rh"
 urlpatterns = [
     path("user/register", NewUserView.as_view(), name="user_register"),
+    path("ferias", AdminVocationsView.as_view(), name="ferias"),
     path(
         "user/profile",
         UserProfileView.as_view(template_name="rh/user_profile.html"),
