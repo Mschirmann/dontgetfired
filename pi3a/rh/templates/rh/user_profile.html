@@ -21,16 +21,21 @@
 
 <section class="content">
     <div class="agrupa_meu_perfil">
-        <h3>Meu Perfil</h3>
+        <h3 class="user__titulo__profile">Meu Perfil</h3>
         <div class="meu_perfil">
             <div class="home_admin_information">
-                <h3>{{user.first_name}} {{ user.last_name}}</h3>
-                <p>CPF: {{ user.username }}</p>
-                <p>Turno:9:00 - 18:00</p>
+                <h3 id="user__name">{{user.username}} {{user.first_name}} {{ user.last_name}}</h3>
+                <p class="user__information">CPF: {{ user.username }}</p>
+                <p class="user__information">Turno:9:00 - 18:00</p>
                 {% if vacations %}
                 <div class="periodo_ferias">
                     <p> Férias de {{vacations.start_date|date:"d/m/Y"}} a {{vacations.end_date|date:"d/m/Y"}}</p>
                 </div>
+                {% else %}
+                <div class="periodo_ferias">
+                    <img style= "margin-left: 20px;" src="{% static 'rh/img/calendar.png' %}" alt="">
+                    <p> Férias de {{vacations.start_date|date:"d/m/Y"}} a {{vacations.end_date|date:"d/m/Y"}}</p>
+                </div>  
                 {% endif %}
 
             </div>
@@ -40,22 +45,25 @@
                     <button class="btn_user_home" type="submit" name="register" value={{ user.id }}>Registrar Ponto</button>
                 </form>
                 <div class="home_admin_time">
-                    <img src="" alt="">
-                    <p>Previsão de Saída</p>
-                    <p>00:00</p>
+                    <img src="{% static 'rh/img/time-left1clock.svg' %}" alt="">
+                    <div class="tempos__saida">
+                        <p id="texto_saida" >Previsão de Saída</p>
+                        <p id="relogio__user__profile">00:00</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="agrupa_lista_registros">
-        <h3>Últimos Registros</h3>
+        <h3 class="user__titulo__profile">Últimos Registros</h3>
         <div class="lista_registros">
             {% for register in last_registers %}
-            <li>{{register.created_at|time:"H:i"}} |
+            <li class="li__registro"><img src="{% static 'rh/img/sair-registros.svg' %}" > {{register.created_at|time:"H:i"}} |
                 {{register.created_at|date:"d.m"}} |
                 {% if forloop.counter|divisibleby:2 %}SAÍDA{% else %}ENTRADA{% endif %}
             </li>
+            ----------------------------------
             {% endfor %}
         </div>
     </div>
