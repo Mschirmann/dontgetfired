@@ -57,13 +57,13 @@
 
     <div class="agrupa_lista_registros">
         <h3 class="user__titulo__profile">Últimos Registros</h3>
-        <div class="lista_registros">
+        <div class="lista_registros" style="margin-bottom: 10px;">
             {% for register in last_registers %}
             <li class="li__registro"><img src="{% static 'rh/img/sair-registros.svg' %}" > {{register.created_at|time:"H:i"}} |
                 {{register.created_at|date:"d.m"}} |
                 {% if forloop.counter|divisibleby:2 %}SAÍDA{% else %}ENTRADA{% endif %}
             </li>
-            ----------------------------------
+            <hr style="max-width: 860px; margin-left: 20px;">
             {% endfor %}
         </div>
     </div>
