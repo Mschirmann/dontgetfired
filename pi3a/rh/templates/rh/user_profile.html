@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %} Home - User {% endblock %}
+{% block title %}Home - Perfil Usuário {% endblock %}
 
 {% block content %}
 
@@ -33,9 +33,9 @@
                 </div>
                 {% else %}
                 <div class="periodo_ferias">
-                    <img style= "margin-left: 20px;" src="{% static 'rh/img/calendar.png' %}" alt="">
+                    <img style="margin-left: 20px;" src="{% static 'rh/img/calendar.png' %}" alt="">
                     <p> Férias de {{vacations.start_date|date:"d/m/Y"}} a {{vacations.end_date|date:"d/m/Y"}}</p>
-                </div>  
+                </div>
                 {% endif %}
 
             </div>
@@ -47,7 +47,7 @@
                 <div class="home_admin_time">
                     <img src="{% static 'rh/img/time-left1clock.svg' %}" alt="">
                     <div class="tempos__saida">
-                        <p id="texto_saida" >Previsão de Saída</p>
+                        <p id="texto_saida">Previsão de Saída</p>
                         <p id="relogio__user__profile">00:00</p>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
         <h3 class="user__titulo__profile">Últimos Registros</h3>
         <div class="lista_registros" style="margin-bottom: 10px;">
             {% for register in last_registers %}
-            <li class="li__registro"><img src="{% static 'rh/img/sair-registros.svg' %}" > {{register.created_at|time:"H:i"}} |
+            <li class="li__registro"><img src="{% static 'rh/img/sair-registros.svg' %}"> {{register.created_at|time:"H:i"}} |
                 {{register.created_at|date:"d.m"}} |
                 {% if forloop.counter|divisibleby:2 %}SAÍDA{% else %}ENTRADA{% endif %}
             </li>
