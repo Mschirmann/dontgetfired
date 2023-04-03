@@ -18,7 +18,7 @@
             <div class="home_admin_information">
                 <h3 id="user__name">{{user.username}} {{user.first_name}} {{ user.last_name}}</h3>
                 <p class="user__information">CPF: {{ user.username }}</p>
-                <p class="user__information">Turno:9:00 - 18:00</p>
+                <p class="user__information" id="turno__trabalho">Turno:9:00 - 18:00</p>
                 {% if vacations %}
                 <div class="periodo_ferias">
                     <p> Férias de {{vacations.start_date|date:"d/m/Y"}} a {{vacations.end_date|date:"d/m/Y"}}</p>
@@ -64,3 +64,5 @@
 </section>
 
 {% endblock %}
+
+<script src="{% static '/rh/js/index.js' %}"></script>
