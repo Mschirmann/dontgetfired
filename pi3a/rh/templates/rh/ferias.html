@@ -18,14 +18,17 @@
             <h4 class="box__titulo__principal">Registro de Férias e Afastamento</h4>
         </div>
         <div class="box_ferias_form">
-            <form id="form_ferias" action="" method="post">
-
+            <form id="form_ferias" method="post" action="{% url 'rh:ferias_register' %}">
+                {% csrf_token %}
+                
                 <div class="ferias__campos">
                     <div class="campos">
                         <h4 class="form__campos__titulo">Adicionar Período de Férias ou Afastamento</h4>
                         <div>
-                            <select name="selecao" id="selecao">
-                                <option value="Selecione funcionário" selected>Selecine funcionário</option>
+                            <select name="fk_user" id="selecao">
+                                {% for user in users %}
+                                    <option value="{{ user.id }}"> {{ user.first_name}} </option>
+                                {% endfor %}
                             </select>
                         </div>
 
@@ -34,12 +37,12 @@
                             <div style="display: flex; gap:13px; margin-top: 13px;">
 
                                 <div>
-                                    <input type="radio" name="tipo" id="ferias" value="ferias" checked>
+                                    <input type="radio" name="type" id="ferias" value="ferias" checked>
                                     <label for="ferias">Férias</label>
                                 </div>
 
                                 <div>
-                                    <input type="radio" name="tipo" value="tipo" id="afastamento">
+                                    <input type="radio" name="type" value="afastamento" id="afastamento">
                                     <label for="afastamento">Afastamento</label>
                                 </div>
 
@@ -50,32 +53,29 @@
 
                             <div>
                                 <label for="">Data ínicio*</label>
-                                <input class="ferias__form__campos__date" type="date">
+                                <input class="ferias__form__campos__date" type="date" name="start_date">
                             </div>
 
                             <div>
                                 <label for="">Data de término</label>
-                                <input class="ferias__form__campos__date" type="date">
+                                <input class="ferias__form__campos__date" type="date" name="end_date">
                             </div>
                         </div>
                     </div>
                 </div>
-
-
                 <div class="ferias__textarea">
                     <div class="descricao">
                         <label for="descricao">Notas*</label>
-                        <textarea name="descricao" id="descricao" cols="30" rows="10"></textarea>
+                        <textarea name="description" id="descricao" cols="30" rows="10"></textarea>
                     </div>
                 </div>
-
-            </form>
         </div>
-
         <div class="box_ferias_buttons">
-            <button style="width: 100%; 
-            height: 2.5rem;" class="btn btn_green btn_ferias">Register</button>
+            <button type="submit" style="width: 100%; 
+            height: 2.5rem;" class="btn btn_green btn_ferias">Registrar</button>
         </div>
+    </form>
+</div>
     </div>
 </section>
 

@@ -1,23 +1,12 @@
-{% extends 'base/base_page_header.html' %}
+{% extends 'base/base_lateral_header.html' %}
 
 {% load static %}
 
-{% block title %}Home - Perfil Usuário {% endblock %}
+{% block title %}Perfil Usuário {% endblock %}
 
 {% block content %}
 
 <link rel="stylesheet" href="{% static 'rh/css/style_home_user.css' %}">
-
-<aside class="side">
-    <div class="lateral_link_meu_perfil">
-        <img class="img_aside" src="{% static 'rh/img/noun-user-home-user.svg' %}" alt="">
-        <a href="{% url 'rh:user_profile'%}" style="margin-left: 0.5625rem;">Meu Perfil</a>
-    </div>
-    <div class="lateral_link_sair" style="margin-top: 0.9375rem;">
-        <img class="img_aside" src="{% static 'rh/img/sair-registros.svg' %}" alt="">
-        <a href="{% url 'logout' %}" style="margin-left: 0.5625rem;">Sair</a>
-    </div>
-</aside>
 
 <section class="content">
     <div class="agrupa_meu_perfil">
@@ -42,7 +31,7 @@
             <div class="home_admin_button">
                 <form method="post" action="{% url 'rh:timesheet_register' %}">
                     {% csrf_token %}
-                    <button class="btn_user_home" type="submit" name="register" value={{ user.id }}>Registrar Ponto</button>
+                    <button class="btn_user_home" type="submit" name="fk_user" value={{ user.id }}>Registrar Ponto</button>
                 </form>
                 <div class="home_admin_time">
                     <img src="{% static 'rh/img/time-left1clock.svg' %}" alt="">
@@ -61,7 +50,7 @@
             {% for register in last_registers %}
             <li class="li__registro"><img src="{% static 'rh/img/sair-registros.svg' %}"> {{register.created_at|time:"H:i"}} |
                 {{register.created_at|date:"d.m"}} |
-                {% if forloop.counter|divisibleby:2 %}SAÍDA{% else %}ENTRADA{% endif %}
+                {{register.type}}
             </li>
             <hr style="max-width: 860px; margin-left: 20px;">
             {% endfor %}
@@ -69,6 +58,6 @@
     </div>
 
 </section>
-<script src="{% static 'rh/js/index.js' %}"></script>
+<script src="{% static '/js/index.js' %}"></script>
 
 {% endblock %}
