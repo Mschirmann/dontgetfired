@@ -1,5 +1,5 @@
 import datetime
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, View
 from django.views.generic.edit import CreateView
 from .forms import UserForm, VacationForm, TimesheetForm
 from .models import User, Time_sheet, Holidays, Vacations
@@ -93,6 +93,11 @@ class TimesheetRegisterView(CreateView):
 class AdminHorasExtrasView(TemplateView):
     model = User
     template_name = "rh/horas_extras.html"
+
+
+class DashboardView(View):
+    def get(self, request):
+        return "to do"
 
 
 class TimesheetListView(ListView):

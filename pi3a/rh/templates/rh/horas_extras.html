@@ -8,7 +8,6 @@
 {% block title %} Horas Extras {% endblock %}
 
 {% block content %}
-
 <section class="content">
 
     <div class="box">
@@ -17,28 +16,30 @@
             <div class="box_horas_extras">
 
                 <div class="selecao__contador">
-
                     <div class="selecao">
                         <h4>Relatório de Horas Extras</h4>
+                        <form id="filterForm" > 
+                            <select>
+                                <option>Selecionar funcionário</option>
+                            </select>
+                            <input name="month_input" id="month_input" type="month"  placeholder="Selecione o mês desejado">
+                            <input type="submit" value="Buscar" name="_load">
+                        </form>
 
-                        <select>
-                            <option>Selecionar funcionário</option>
-                        </select>
-
-                        <input type="date" placeholder="Selecione o período desejado">
                     </div>
 
                     <div class="box_contador">
                         <img class="clock" src="{% static 'rh/img/time-left1clock.svg' %}" alt="">
                         <p style="text-transform: uppercase; color: #FFFF;">Horas Extras</p>
                         <div class="contador">
-                            <p>00:00</p>
+                            <p id="extra_hours">00:00</p>
                         </div>
                     </div>
 
                 </div>
 
                 <div class="area__grafico">
+                    <canvas id="chart" height="100"></canvas>
                 </div>
             </div>
 
@@ -46,6 +47,74 @@
     </div>
 
 </section>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"> </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
+<script>
+    let today = new Date();
+    let month = today.getMonth() + 1;
+    month = (month < 10 ? '0' : '') + month;
+    let year = today.getFullYear();
+    let month_input = document.getElementById("month_input");
+    month_input.defaultValue=year + "-" + month;
 
+    let ctx = document.getElementById("chart").getContext("2d");
+    let chart = new Chart(ctx, {
+    type: "line",
+    data: {
+        labels: ["2020/Q1", "2020/Q2", "2020/Q3", "2020/Q4"],
+        datasets: [
+            {
+            label: "Horas trabalhadas",
+            backgroundColor: "#28734e",
+            borderColor: "#28734e",
+            data: [26900, 28700, 27300, 29200]
+            }
+        ]
+    },
+    options: {
+        title: {
+            text: "Gross Volume in 2020",
+            display: true
+        }
+    }
+    });
+
+
+  $("#filterForm").on("submit", (event) => {
+    event.preventDefault();
+
+    const month = $("#month_input").val();
+    loadChart(month);
+  });
+
+  function loadChart(month) {
+    $.ajax({
+      url: `/rh/dashboard/${month}`,
+      type: "GET",
+      dataType: "json",
+      success: (jsonResponse) => {
+        // Extract data from the response
+        const title = jsonResponse.title;
+        const labels = jsonResponse.data.labels;
+        const datasets = jsonResponse.data.datasets;
+
+        // Reset the current chart
+        chart.data.datasets = [];
+        chart.data.labels = [];
+
+        // Load new data into the chart
+        chart.options.title.text = title;
+        chart.options.title.display = true;
+        chart.data.labels = labels;
+        datasets.forEach(dataset => {
+            chart.data.datasets.push(dataset);
+        });
+        chart.update();
+      },
+      error: () => console.log("Failed to fetch chart data from " + endpoint + "!")
+    });
+  }
+
+</script>
 
 {% endblock %}
