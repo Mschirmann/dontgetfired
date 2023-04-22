@@ -1,8 +1,10 @@
 import datetime
+import calendar
 from django.views.generic import TemplateView, ListView, View
 from django.views.generic.edit import CreateView
 from .forms import UserForm, VacationForm, TimesheetForm
 from .models import User, Time_sheet, Holidays, Vacations
+from django.http import JsonResponse
 
 
 class UserProfileView(TemplateView):
@@ -91,13 +93,42 @@ class TimesheetRegisterView(CreateView):
 
 
 class AdminHorasExtrasView(TemplateView):
-    model = User
     template_name = "rh/horas_extras.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["users"] = User.objects.all()
+        return context
 
 
 class DashboardView(View):
-    def get(self, request):
-        return "to do"
+    def get(self, request, *args, **kwargs):
+        user_id = int(kwargs["user_id"])
+        month = kwargs["month"]
+        input_dt = month.split("-")
+        period = calendar.monthrange(int(input_dt[0]), int(input_dt[1]))
+        start_date = input_dt[0] + "-" + input_dt[1] + "-01"
+        end_date = input_dt[0] + "-" + input_dt[1] + "-" + str(period[1])
+        query = Time_sheet.objects.filter(
+            fk_user_id=user_id, created_at__range=[start_date, end_date]
+        )
+        for time in query:
+            print(time)
+
+        data = {
+            "labels": ["2020/Q1", "2020/Q2", "2020/Q3", "2020/Q4"],
+            "datasets": [
+                {
+                    "label": "Horas trabalhadas",
+                    "backgroundColor": "#28734e",
+                    "borderColor": "#28734e",
+                    "data": [26900, 28700, 27300, 29200],
+                }
+            ],
+            "extra_hours": "10:00",
+        }
+
+        return JsonResponse({"data": data})
 
 
 class TimesheetListView(ListView):

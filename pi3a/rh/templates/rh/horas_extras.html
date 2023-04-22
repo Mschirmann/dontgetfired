@@ -19,9 +19,10 @@
                     <div class="selecao">
                         <h4>Relatório de Horas Extras</h4>
                         <form id="filterForm" > 
-                            <select>
-                                <option>Selecionar funcionário</option>
-                            </select>
+                            <select name="user_input" id="user_input">
+                                {% for user in users %}
+                                    <option value="{{ user.id }}"> {{ user.first_name}} </option>
+                                {% endfor %}
                             <input name="month_input" id="month_input" type="month"  placeholder="Selecione o mês desejado">
                             <input type="submit" value="Buscar" name="_load">
                         </form>
@@ -50,31 +51,21 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"> </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
 <script>
+    let extra_hours = "00:00"
     let today = new Date();
     let month = today.getMonth() + 1;
-    month = (month < 10 ? '0' : '') + month;
     let year = today.getFullYear();
     let month_input = document.getElementById("month_input");
+    month = (month < 10 ? '0' : '') + month;
     month_input.defaultValue=year + "-" + month;
 
     let ctx = document.getElementById("chart").getContext("2d");
     let chart = new Chart(ctx, {
     type: "line",
-    data: {
-        labels: ["2020/Q1", "2020/Q2", "2020/Q3", "2020/Q4"],
-        datasets: [
-            {
-            label: "Horas trabalhadas",
-            backgroundColor: "#28734e",
-            borderColor: "#28734e",
-            data: [26900, 28700, 27300, 29200]
-            }
-        ]
-    },
     options: {
         title: {
-            text: "Gross Volume in 2020",
-            display: true
+            text: "Horas trabalhadas",
+            display: false
         }
     }
     });
@@ -84,32 +75,33 @@
     event.preventDefault();
 
     const month = $("#month_input").val();
-    loadChart(month);
+    const user = $("#user_input").val();
+    loadChart(month,user);
   });
 
-  function loadChart(month) {
+  function loadChart(month, user) {
     $.ajax({
-      url: `/rh/dashboard/${month}`,
+      url: `/rh/dashboard/${user}/${month}`,
       type: "GET",
       dataType: "json",
       success: (jsonResponse) => {
         // Extract data from the response
-        const title = jsonResponse.title;
         const labels = jsonResponse.data.labels;
         const datasets = jsonResponse.data.datasets;
-
+        const extra_hours = jsonResponse.data.extra_hours;
         // Reset the current chart
         chart.data.datasets = [];
         chart.data.labels = [];
-
+        
         // Load new data into the chart
-        chart.options.title.text = title;
         chart.options.title.display = true;
         chart.data.labels = labels;
         datasets.forEach(dataset => {
             chart.data.datasets.push(dataset);
         });
         chart.update();
+        extra_hours = document.getElementById("extra_hours").innerHTML=extra_hours
+
       },
       error: () => console.log("Failed to fetch chart data from " + endpoint + "!")
     });
