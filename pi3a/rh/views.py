@@ -131,42 +131,44 @@ class DashboardView(View):
         ).order_by("created_at")
 
         # variables used inside loop to format chart
-        tz = pytz.timezone("America/Sao_Paulo")
-        prev_date = None
         datasets = []
+        last_day = None
+        last_time = None
+        result_dict = {}
         extra_hours = 0
         for times in times_query:
-            full_date = localtime(times.created_at, tz)
-            if not prev_date:
-                prev_date = full_date
-
-            if prev_date.day == full_date.day:
-                diff = full_date - prev_date
-                datasets.append(
-                    {
-                        "day": datetime.datetime.strftime(full_date, "%d/%m"),
-                        "hours_worked": diff.seconds,
-                    }
-                )
-                prev_date = full_date
+            day = times.created_at.date()
+            time = times.created_at.time()
+            if day == last_day:
+                if last_time is not None:
+                    diff = datetime.datetime.combine(
+                        datetime.date.today(), time
+                    ) - datetime.datetime.combine(datetime.date.today(), last_time)
+                    result_dict[str(day)] += diff / datetime.timedelta(hours=1)
+                    last_time = time
             else:
-                prev_date = None
+                last_day = day
+                last_time = time
+                result_dict[str(day)] = 0
 
-        dataset_values = defaultdict(int)
-        for item in datasets:
-            day = item["day"]
-            seconds = item["hours_worked"]
-            dataset_values[day] += seconds // 3600
-            if dataset_values[day] > 8:
-                extra_hours = extra_hours + (dataset_values[day] - 8)
+        # format the value as a float with 2 decimal places
+        for day, value in result_dict.items():
+            result_dict[day] = "{:.2f}".format(value)
+
+        # calculate extra_hours
+        for day, value in result_dict.items():
+            if float(value) > 8:
+                extra_hours += float(value) - 8
+        extra_hours = "{:.2f}".format(extra_hours)
+
         data = {
-            "labels": list(dataset_values.keys()),
+            "labels": list(result_dict.keys()),
             "datasets": [
                 {
                     "label": "Horas trabalhadas",
                     "backgroundColor": "#28734e",
                     "borderColor": "#28734e",
-                    "data": list(dataset_values.values()),
+                    "data": list(result_dict.values()),
                 }
             ],
             "extra_hours": extra_hours,
