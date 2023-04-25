@@ -18,25 +18,35 @@
             <div class="home_admin_information">
 
                 <h2 id="titulo_registro_form">CADASTRO DE FUNCIONÁRIOS</h2>
-                    <form method="post" style="display: flex; flex-direction: column;">
-                        {% csrf_token %}
-                        <!-- 
-                            {{ form.as_p }}
-                        -->
-                        <input class="register__form__input" type="text" name="username" placeholder="N° CPF" required maxlength="100">
-                        <input class="register__form__input" type="text" name="first_name" placeholder="Nome" required maxlength="100">
-                        <input class="register__form__input" type="text" name="last_name" placeholder="Sobrenome" required maxlength="100">
-                        <input class="register__form__input" type="password" name="password1" placeholder="Senha" required maxlength="100">
-                        <input class="register__form__input" type="password" name="password2" placeholder="Repita a senha" required maxlength="100">
-                        <button class="btn btn_user_home" type="submit">Registrar </button>
-                        <div class="buttons_register">
-                        </div>
-                    </form>
+                <form method="post" style="display: flex; flex-direction: column;">
+                    {% csrf_token %}
+                    
+                    <input class="register__form__input" id="cpf" type="text" name="username" placeholder="N° CPF" required maxlength="12" minlength="11">
+                    <span role="alert" id="error" aria-hidden="true">Digite um cpf válido.</span>
+
+                    <input class="register__form__input" type="text" name="first_name" placeholder="Nome" required maxlength="100" id="name">
+                    <span role="alert" id="error1" aria-hidden="true">Digite um texto válido.</span>
+
+                    <input class="register__form__input" type="text" name="last_name" placeholder="Sobrenome" required maxlength="100" id="lastname">
+                    <span role="alert" id="error2" aria-hidden="true">Digite texto válido.</span>
+
+                    <input class="register__form__input" type="password" name="password1" placeholder="Senha" required maxlength="100" minlength="8" id="pass">
+                    <span role="alert" id="error3" aria-hidden="true">Digite uma senha válida.</span>
+
+                    <input class="register__form__input" type="password" name="password2" placeholder="Repita a senha" required maxlength="100" minlength="8" id="pass_conf">
+                    <span role="alert" id="error4" aria-hidden="true">Senha não confere.</span>
+
+                    <button onclick="validate" class="btn btn_user_home" type="submit" id="submit">Registrar </button>
+                    <div class="buttons_register">
+                    </div>
+                </form>
             </div>
 
         </div>
     </div>
 
 </section>
+<!-- <script src="{% static 'rh/js/validate.js'  %}"></script> -->
+<script src="{% static '/js/validate.js' %}"></script>
 
 {% endblock %}
