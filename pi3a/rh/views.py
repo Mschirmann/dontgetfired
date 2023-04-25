@@ -1,10 +1,22 @@
+from collections import defaultdict
 import datetime
 import calendar
+from functools import reduce
 from django.views.generic import TemplateView, ListView, View
 from django.views.generic.edit import CreateView
 from .forms import UserForm, VacationForm, TimesheetForm
 from .models import User, Time_sheet, Holidays, Vacations
 from django.http import JsonResponse
+from django.db.models import F, Sum, DateField, CharField, Value, Func
+from django.db.models.functions import (
+    Trunc,
+    TruncDay,
+    ExtractDay,
+    ExtractMonth,
+    Concat,
+)
+from django.utils.timezone import localtime
+import pytz
 
 
 class UserProfileView(TemplateView):
@@ -103,29 +115,61 @@ class AdminHorasExtrasView(TemplateView):
 
 class DashboardView(View):
     def get(self, request, *args, **kwargs):
+        # get request params
         user_id = int(kwargs["user_id"])
         month = kwargs["month"]
         input_dt = month.split("-")
+
+        # get month last day do filter query
         period = calendar.monthrange(int(input_dt[0]), int(input_dt[1]))
         start_date = input_dt[0] + "-" + input_dt[1] + "-01"
         end_date = input_dt[0] + "-" + input_dt[1] + "-" + str(period[1])
-        query = Time_sheet.objects.filter(
-            fk_user_id=user_id, created_at__range=[start_date, end_date]
-        )
-        for time in query:
-            print(time)
 
+        # query using date range and user
+        times_query = Time_sheet.objects.filter(
+            fk_user_id=user_id, created_at__range=[start_date, end_date]
+        ).order_by("created_at")
+
+        # variables used inside loop to format chart
+        tz = pytz.timezone("America/Sao_Paulo")
+        prev_date = None
+        datasets = []
+        extra_hours = 0
+        for times in times_query:
+            full_date = localtime(times.created_at, tz)
+            if not prev_date:
+                prev_date = full_date
+
+            if prev_date.day == full_date.day:
+                diff = full_date - prev_date
+                datasets.append(
+                    {
+                        "day": datetime.datetime.strftime(full_date, "%d/%m"),
+                        "hours_worked": diff.seconds,
+                    }
+                )
+                prev_date = full_date
+            else:
+                prev_date = None
+
+        dataset_values = defaultdict(int)
+        for item in datasets:
+            day = item["day"]
+            seconds = item["hours_worked"]
+            dataset_values[day] += seconds // 3600
+            if dataset_values[day] > 8:
+                extra_hours = extra_hours + (dataset_values[day] - 8)
         data = {
-            "labels": ["2020/Q1", "2020/Q2", "2020/Q3", "2020/Q4"],
+            "labels": list(dataset_values.keys()),
             "datasets": [
                 {
                     "label": "Horas trabalhadas",
                     "backgroundColor": "#28734e",
                     "borderColor": "#28734e",
-                    "data": [26900, 28700, 27300, 29200],
+                    "data": list(dataset_values.values()),
                 }
             ],
-            "extra_hours": "10:00",
+            "extra_hours": extra_hours,
         }
 
         return JsonResponse({"data": data})
