@@ -26,7 +26,7 @@ SECRET_KEY = "e+0wp@#dm=db%gs2+wmg7l8x=re+7((zahtxq0gp98!+!%3*i1"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mschirmann.pythonanywhere.com']
 
 
 # Application definition
@@ -78,10 +78,10 @@ WSGI_APPLICATION = "pi3a.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "pi3a",
-        "USER": "root",
-        "PASSWORD": "1NewRoot@",
-        "HOST": "localhost",
+        "NAME": "MSchirmann$pi3a",
+        "USER": "MSchirmann",
+        "PASSWORD": "B30nT1m3",
+        "HOST": "MSchirmann.mysql.pythonanywhere-services.com",
         "PORT": "3306",
     }
 }
@@ -125,6 +125,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = "/static/"
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 
 # django_project/settings.py
 LOGIN_REDIRECT_URL = "home"
