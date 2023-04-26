@@ -1,0 +1,171 @@
+:root {
+    --rh-gray: #E4E3E2;
+    --rh-green: #28734E;
+    --rh-white: #FEFEFE;
+    --rh-black-text: rgba(0,0,0, 0.75);
+    --rh-green-ligth: #28734eb7; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.side {
+    width: 13.125rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: rgba(0,0,0, 0.75);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+}
+
+.lateral_link_meu_perfil, .lateral_link_sair {
+    display: flex;
+    align-items: center;
+    margin-left: 1.0625rem;
+    margin-top: 2.75rem;
+}
+
+.user__titulo__profile {
+    color: var(--rh-green);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.agrupa_meu_perfil {
+    margin-top: 53px;
+}
+
+.meu_perfil {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 900px;
+    height: 250px;
+    background-color: #fff;
+    gap: 132.5px;
+}
+
+.periodo_ferias {
+    gap: 8px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    border-radius: 7px;
+    background-color: var(--rh-gray);
+    width: 278px;
+    height: 32px;
+    margin-top: 22px;
+}
+
+
+
+.agrupa_lista_registros {
+    margin-top: 17px;
+}
+
+.lista_registros {
+    width: 900px;
+    height: 250px;
+    background-color: #fff;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+.content {
+    background-color: #E4E3E2;
+    width: 100%;
+    height: 95.35vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#user__name {
+    margin-bottom: 14px;
+    font-size: 18px;
+    color: var(--rh-green-ligth);
+    text-transform: uppercase;
+}
+
+.user__information {
+    font-size: 13px;
+    color: rgba(0,0,0, 0.75);
+    gap: 3px;
+}
+
+.btn_user_home {
+    background-color: #28734E;
+    width: 296px;
+    height: 96px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    border: none;
+}
+
+.img_aside {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.home_admin_time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    padding-top: 33px;
+}
+
+.tempos__saida {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#relogio__user__profile {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.home_admin_information {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.li__registro {
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    list-style: none;
+    /* margin-top: 26px; */
+    margin-left: 36px;
+}
+
+.li__entrada {
+    color: var(--rh-green-ligth);
+}
+
+.li__saida {
+    color: rgba(0,0,0, 0.50);
+}
