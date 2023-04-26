@@ -21,20 +21,20 @@
                 <form method="post" style="display: flex; flex-direction: column;">
                     {% csrf_token %}
                     
-                    <input class="register__form__input" id="cpf" type="text" name="username" placeholder="N° CPF" required maxlength="12" minlength="11">
-                    <span role="alert" id="error" aria-hidden="true">Digite um cpf válido.</span>
+                    <input class="register__form__input" id="cpf" type="text" name="username" placeholder="N° CPF" required maxlength="11" minlength="11" onblur="validateCPF(this.value)" onchange="validateCPF(this.value)">
+                    <span id="cpfInvalido" style="color: red; display: none;">Digite um cpf válido.</span>
 
-                    <input class="register__form__input" type="text" name="first_name" placeholder="Nome" required maxlength="100" id="name">
-                    <span role="alert" id="error1" aria-hidden="true">Digite um texto válido.</span>
+                    <input class="register__form__input" type="text" name="first_name" placeholder="Nome" required maxlength="100" id="name" onblur="validateNome(this.value)" onchange="validateNome(this.value)">
+                    <span id="nameInvalido" style="color: red; display: none;">Digite um nome válido.</span>
 
-                    <input class="register__form__input" type="text" name="last_name" placeholder="Sobrenome" required maxlength="100" id="lastname">
-                    <span role="alert" id="error2" aria-hidden="true">Digite texto válido.</span>
+                    <input class="register__form__input" type="text" name="last_name" placeholder="Sobrenome" required maxlength="100" id="lastname" onblur="validateSobrenome(this.value)" onchange="validateSobrenome(this.value)">
+                    <span id="sobrenomeInvalido" style="color: red; display: none;">Digite um sobrenome válido.</span>
 
-                    <input class="register__form__input" type="password" name="password1" placeholder="Senha" required maxlength="100" minlength="8" id="pass">
-                    <span role="alert" id="error3" aria-hidden="true">Digite uma senha válida.</span>
+                    <input class="register__form__input" type="password" name="password1" placeholder="Senha" required maxlength="100" minlength="8" id="pass" onblur="validateSenha(this.value)" onchange="validateSenha(this.value)">
+                    <span id="senhaInvalida" style="color: red; display: none;">Digite uma senha válida.</span>
 
-                    <input class="register__form__input" type="password" name="password2" placeholder="Repita a senha" required maxlength="100" minlength="8" id="pass_conf">
-                    <span role="alert" id="error4" aria-hidden="true">Senha não confere.</span>
+                    <input class="register__form__input" type="password" name="password2" placeholder="Repita a senha" required maxlength="100" minlength="8" id="pass_conf" onblur="validateSenhaConf(this.value)" onchange="validateSenhaConf(this.value)">
+                    <span id="senhaConfInvalida" style="color: red; display: none;">Digite uma senha válida.</span>
 
                     <button onclick="validate" class="btn btn_user_home" type="submit" id="submit">Registrar </button>
                     <div class="buttons_register">

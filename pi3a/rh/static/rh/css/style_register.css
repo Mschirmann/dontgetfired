@@ -77,52 +77,6 @@ input {
   border-radius: 1px solid rgba(0, 0, 0, 0.75);
 }
 
-.error {
-  display: none;
-  font-size: 1rem;
-}
-
-.error.visible {
-  display: block;
-}
-
-.error1 {
-  display: none;
-  font-size: 1rem;
-}
-
-.error1.visible {
-  display: block;
-}
-
-
-.error2 {
-  display: none;
-  font-size: 1rem;
-}
-
-.error2.visible {
-  display: block;
-}
-
-.error3 {
-  display: none;
-  font-size: 1rem;
-}
-
-.error3.visible {
-  display: block;
-}
-
-.error4 {
-  display: none;
-  font-size: 1rem;
-}
-
-.error4.visible {
-  display: block;
-}
-
 input.invalid {
   color: red;
 }
