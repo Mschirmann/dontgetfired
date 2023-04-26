@@ -1,22 +1,10 @@
-from collections import defaultdict
 import datetime
 import calendar
-from functools import reduce
 from django.views.generic import TemplateView, ListView, View
 from django.views.generic.edit import CreateView
 from .forms import UserForm, VacationForm, TimesheetForm
 from .models import User, Time_sheet, Holidays, Vacations
 from django.http import JsonResponse
-from django.db.models import F, Sum, DateField, CharField, Value, Func
-from django.db.models.functions import (
-    Trunc,
-    TruncDay,
-    ExtractDay,
-    ExtractMonth,
-    Concat,
-)
-from django.utils.timezone import localtime
-import pytz
 
 
 class UserProfileView(TemplateView):
